@@ -4,6 +4,7 @@ import { StyleSheet, Switch, View} from "react-native";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Blank } from "./pages/Blank";
 import { People } from "./pages/People";
+import  {  RFPercentage ,  RFValue  }  from  "react-native-responsive-fontsize" ;
 
 const queryClient = new QueryClient();
 
@@ -34,5 +35,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  welcome: {
+    fontSize: RFValue(24, 580),
+    textAlign: "center",
+    margin: 10,
+  },
+  instructions: {
+    textAlign: "center",
+    color: "#333333",
+    marginBottom: 5,
+    fontSize: RFPercentage(5),
   },
 });

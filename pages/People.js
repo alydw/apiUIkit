@@ -2,6 +2,7 @@ import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useQuery } from "react-query";
 import axios from "axios";
+import { Spacer, NativeBaseProvider, VStack } from "native-base";
 
 export const People = () => {
   const config = {
@@ -20,19 +21,25 @@ export const People = () => {
   if (error) return <Text>An error has occurred: {error.message}</Text>;
 
   return (
+    <NativeBaseProvider>
     <ScrollView>
       {!!data &&
         data.map((user,index) => (
           <View key={index} style={styles.container}>
+            <VStack borderBottomWidth="1" _dark={{
+      borderColor: "gray.600"
+    }} borderColor="coolGray.200" pl="4" pr="5" py="2">
             <Text style={styles.nome}>Nome: {user.name}</Text>
             <Text style={styles.text}>Email: {user.email}</Text>
-            <Text>-----------------------------------------------</Text>
+            <Spacer />
+            </VStack>
             <View>
               <Text>{isFetching ? "Updating..." : ""}</Text>
             </View>
           </View>
         ))}
     </ScrollView>
+    </NativeBaseProvider>
   );
 };
 

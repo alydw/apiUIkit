@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, View, SafeAreaView, TextInput, } from "react-native";
+import { StyleSheet, View, SafeAreaView, Text } from "react-native";
 import { useMutation } from "react-query";
 import axios from "axios";
-import { NativeBaseProvider, Box, Heading, Button, ScrollView } from 'native-base';
+import { NativeBaseProvider, Box, Heading, Button, ScrollView, Input, } from 'native-base';
 
 export const Blank = () => {
   const [text, setText] = React.useState({
@@ -36,40 +36,40 @@ export const Blank = () => {
   };
 
   function Head() {
-    return <Heading>Novo usuário</Heading>;
+    return <Heading style={styles.head}>Novo usuário</Heading>;
+    
   }
 
   return ( 
     <NativeBaseProvider>
-      <Box flex={1} bg="#F0FFF0" alignItems="center" justifyContent="center">
+      <Box flex={1} bg="#F0FFF0" alignItems="center" justifyContent="center"
+      width="260px">
     <SafeAreaView style={styles.tela}>
     <View style={styles.container}>
      <Head></Head>
     
-    <TextInput
+    <Input mx="3" w="85%" maxWidth="300px"
         style={styles.input}
         onChangeText={value => setText({...text,name:value})}
         value={text.name}
         placeholder="Nome"
       />
-      <TextInput
-        style={styles.input}
+      <Input mx="3" w="85%" maxWidth="300px"
         onChangeText={value => setText({...text,email:value})}
         value={text.email}
         placeholder="E-mail"
       />
-      <TextInput
-        style={styles.input}
+      <Input mx="3" w="85%" maxWidth="300px"
         onChangeText={value => setText({...text,gender:value})}
         value={text.gender}
         placeholder="Gênero"
       />
-      <TextInput
-        style={styles.input}
+      <Input mx="3" w="85%" maxWidth="300px"
         onChangeText={value => setText({...text,status:value})}
         value={text.status}
         placeholder="Status"
       />
+      <Text>            </Text>
       <Botao></Botao>
     </View>
     </SafeAreaView>
@@ -83,10 +83,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
+  head: {
+    margin: "15px",
+},
 });
